@@ -1,0 +1,7 @@
+// 2019-08-24 19:41:42
+#event step
+x = obj_achTest.x;
+y = obj_achTest.y;
+
+#event draw_gui
+draw_self();

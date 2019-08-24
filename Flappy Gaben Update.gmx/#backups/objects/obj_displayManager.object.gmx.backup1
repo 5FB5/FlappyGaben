@@ -1,0 +1,141 @@
+// 2019-08-24 19:28:16
+#event create
+gamepadSupport();
+
+if (gamepad_realCount > 0) {
+    window_set_cursor(cr_none);
+ }
+  else {
+      window_set_cursor(cr_default);
+  }
+
+var currentWidth = display_get_width();
+var currentHeight = display_get_height();
+
+var aspectRatio = currentWidth / currentHeight;
+
+var baseHeight = display_get_height();
+var baseWidth =  baseHeight * aspectRatio;
+
+view_wview = floor(baseWidth);
+view_hview = baseHeight;
+
+view_wport = currentWidth;
+view_hport = currentHeight;
+
+display_set_gui_size(view_wview, view_hview);
+surface_resize(application_surface, view_wview, view_hview);
+window_set_size(view_wview, view_hview);
+
+
+globalvar day, month, year, language, winW, winH;
+day = date_get_day(date_current_datetime());
+month = date_get_month(date_current_datetime());
+year = date_get_year(date_current_datetime());
+
+language = 0;
+
+winW = window_get_width();
+winH = window_get_height();
+
+//globalvar globalMusic, globalSound, fileMusic, fileSound;
+
+if (file_exists("music.txt")) {
+    fileMusic = file_text_open_read("music.txt");
+    globalMusic = file_text_read_real(fileMusic);
+    file_text_close(fileMusic);
+ }
+  else {
+    fileMusic = file_text_open_write("music.txt");
+    file_text_write_real(fileMusic, 0.7);
+    globalMusic = 0.7;
+    file_text_close(fileMusic);  
+  }
+  
+if (file_exists("sound.txt")) {
+    fileSound = file_text_open_read("sound.txt");
+    globalSound = file_text_read_real(fileSound);
+    file_text_close(fileSound);
+ }
+  else {
+    fileSound = file_text_open_write("sound.txt");
+    file_text_write_real(fileSound, 0.7);
+    globalSound = 0.7;
+    file_text_close(fileSound);  
+  }
+
+audio_sound_gain(mus_gaben2, globalMusic, 0);
+audio_sound_gain(mus_gabenSong, globalMusic, 0);
+audio_sound_gain(mus_stopGaben, globalMusic, 0);
+audio_sound_gain(mus_xmas, globalMusic, 0);
+audio_sound_gain(mus_sector_sweep, globalMusic, 0);
+
+audio_sound_gain(snd_buttonClick, globalSound, 0);
+audio_sound_gain(snd_buttonClickReleased, globalSound, 0);
+audio_sound_gain(snd_buttonRollOver, globalSound, 0);
+audio_sound_gain(snd_achievement, globalSound, 0);
+audio_sound_gain(snd_error, globalSound, 0);
+audio_sound_gain(snd_pain, globalSound, 0);
+audio_sound_gain(snd_score, globalSound, 0);
+audio_sound_gain(snd_swing, globalSound, 0);
+
+//show_debug_overlay(true);
+
+#event step
+
+audio_sound_gain(mus_gaben2, globalMusic, 0);
+audio_sound_gain(mus_gabenSong, globalMusic, 0);
+audio_sound_gain(mus_stopGaben, globalMusic, 0);
+audio_sound_gain(mus_xmas, globalMusic, 0);
+audio_sound_gain(mus_sector_sweep, globalMusic, 0);
+
+
+audio_sound_gain(snd_buttonClick, globalSound, 0);
+audio_sound_gain(snd_buttonClickReleased, globalSound, 0);
+audio_sound_gain(snd_buttonRollOver, globalSound, 0);
+audio_sound_gain(snd_error, globalSound, 0);
+audio_sound_gain(snd_pain, globalSound, 0);
+audio_sound_gain(snd_score, globalSound, 0);
+audio_sound_gain(snd_swing, globalSound, 0);
+
+if (keyboard_check(vk_f6)) {
+    show_debug_overlay(true);
+ }
+  else if (keyboard_check(vk_f7)) {
+      show_debug_overlay(false);
+  }
+
+#event draw_gui
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+draw_set_color(c_white);
+draw_set_font(fnt_arial);
+draw_set_color(c_white);
+
+var file, dev;
+
+if (file_exists("dev.sav")) {
+    file = file_text_open_read("dev.sav");
+    dev = file_text_read_real(file);
+    file_text_close(file);
+
+switch (dev) {
+    case 0: {
+        break;
+    }
+    case 1: {
+        draw_set_font(font_debug);
+
+        draw_text(x, y, "FPS: " +string(fps));
+        draw_text(x, y + 40, "display width " +string(display_get_width()));
+        draw_text(x, y + 80, "display heigth " +string(display_get_height() ) );
+
+        if (room == r_gameplay) draw_text(x, y + 200, "global.defeat =  " +string(global.defeat));
+
+        draw_text(x, y + 240, "mouse x =  " +string(mouse_x));
+        draw_text(x, y + 290, "mouse y =  " +string(mouse_y));
+            
+    break;
+  }
+ }
+}

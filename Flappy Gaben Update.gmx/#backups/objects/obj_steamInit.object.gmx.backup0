@@ -1,0 +1,14 @@
+// 2019-08-24 18:06:51
+#event create
+depth = -5000;
+
+#event step
+/*if (keyboard_check_released(ord("T") ) ) {
+    shader_set(shdr_myShader);
+ } 
+  else if (keyboard_check_released(ord("Y") ) ) {
+    shader_reset();
+  }
+*/
+
+#event draw_gui

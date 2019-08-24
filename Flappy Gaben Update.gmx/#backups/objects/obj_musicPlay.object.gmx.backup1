@@ -1,0 +1,33 @@
+// 2019-08-24 17:50:25
+#event create
+alarm[0] = 1;
+
+#event alarm0
+/*if (audio_is_playing(mus_portal_taste_of_blood))
+    audio_stop_sound(mus_portal_taste_of_blood);
+  */  
+var music1;
+music1 = choose(mus_gabenSong, mus_gaben2, mus_stopGaben);
+
+if ((day == 31) && (month == 12)) {
+    music1 = choose(mus_xmas, mus_gaben2, mus_stopGaben, mus_gabenSong);
+ }
+ 
+audio_play_sound(music1, 0, false);
+
+alarm[1] = (audio_sound_length(music1) * room_speed) + 100;
+
+#event alarm1
+
+var music2;
+music2 = choose(mus_stopGaben, mus_gaben2);
+
+if ((day == 31) && (month == 12)) { // new year
+    music2 = choose(mus_xmas, mus_gaben2, mus_stopGaben);
+ }
+
+     
+    
+audio_play_sound(music2, 0, false);
+
+alarm[0] = (audio_sound_length(music2) * room_speed) + 100;

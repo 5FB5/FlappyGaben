@@ -1,0 +1,182 @@
+// 2019-08-24 18:34:09
+#event create
+my_console = console_create();
+
+/*****************************
+* This allows you to override
+* the default settings for the
+* console system.
+*****************************/
+console_settings(my_console,",",false);
+
+/*****************************
+* This loads some preset commands
+* into the console system.
+*****************************/
+console_preset(my_console);
+
+/*****************************
+* This loads all the available
+* commands from a text file,
+* which will be shown as suggestions
+* whilst the user types.
+*****************************/
+//console_text_open(my_console,"commands.txt");
+
+/*****************************
+* You can also add individual
+* commands to the suggestions
+* list.
+*****************************/
+
+console_add(my_console, "dev");
+console_add(my_console, "map"+s+"<0-menu, 1-game, 2-shop, 3-shopList2, 4-credits, 5-archTest>");
+console_add(my_console, "quit");
+console_add(my_console, "player set_money");
+console_add(my_console, "set_vsync");
+
+console_add(my_console, "file set_skinData1");
+console_add(my_console, "file set_skinData2");
+console_add(my_console, "file set_skinData3");
+console_add(my_console, "file set_skinData4");
+console_add(my_console, "file set_bonusData1");
+console_add(my_console, "file set_bonusData2");
+console_add(my_console, "file set_bonusData3");
+console_add(my_console, "file set_bonusData4");
+
+#event destroy
+/*****************************
+* Remember to destroy console
+* system when no longer needed,
+* to free up memory.
+*****************************/
+console_destroy(my_console);
+
+#event step
+
+if console_submit(my_console) {
+
+
+    if console_cmd(my_console, "player set_money") { //PLAYER_MONEY
+       Money = console_value(my_console, 1);
+       file = file_text_open_write("playerMoney.txt");
+       file_text_write_real(file, Money);
+       file_text_close(file);
+    }
+
+    if console_cmd(my_console, "set_vsync") { // vsync off/on
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("options.sav");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "dev") {
+        devValue = console_value(my_console, 1);
+        if (file_exists("dev.sav")) {   // developer mode
+            file = file_text_open_write("dev.sav");
+            file_text_write_real(file, devValue);
+            file_text_close(file);
+        }
+    }
+    
+    if console_cmd(my_console, "quit") {
+        game_end();
+    }
+    
+    if console_cmd(my_console, "map") { // change map
+        currentMap = console_value(my_console, 1);
+        
+        switch(currentMap) {
+            case 0: room_goto(r_menu)
+                    break;
+            case 1: room_goto(r_gameplay)
+                    break;
+            case 2: room_goto(r_shop)
+                    break;
+            case 3: room_goto(r_shop2)
+                    break;
+            case 4: room_goto(r_credits)
+                    break;
+            case 5: room_goto(r_achvTest)
+                    break;
+        }
+        
+    }
+    
+    if console_cmd(my_console, "file set_skinData1") { //SKINDATA1
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("skinData1.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_skinData2") { //SKINDATA2
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("skinData2.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_skinData3") { //SKINDATA3
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("skinData3.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_skinData4") { //SKINDATA4
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("skinData4.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+
+    if console_cmd(my_console, "file set_bonusData1") { //BONUS DATA1
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("bonusData1.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_bonusData2") { //BONUS DATA2
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("bonusData2.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_bonusData3") { //BONUS DATA3
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("bonusData3.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_bonusData4") { //BONUS DATA4
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("bonusData4.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+}
+
+#event draw_gui
+
+draw_set_font(fnt_arial);
+console_draw(my_console,400,c_gray,c_gray,c_white,c_white,0.7);
+
+
+#event keypress:vk_f2
+
+console_toggle(my_console);

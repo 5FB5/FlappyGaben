@@ -1,0 +1,27 @@
+// 2018-09-05 16:56:37
+#event create
+globalvar ran_x, ran_y ;
+
+alarm[0] = 30;
+
+#event alarm0
+if (global.defeat == false){
+xx = 2070;
+yy = choose(490, 415, 420, 400, 500, 650);
+
+instance_create(xx, yy, obj_tube);
+
+ if (global.globalTimer_value > 55) { //Если прошло 55 секунд, то уменьшить диапазон спавна труб  
+   yy = choose(530, 450, 520, 510, 400, 690);
+   ran_x = 6;
+   ran_y = 13;
+}
+   else //Иначе ставить стандартное значение
+   {
+    ran_x = 6;
+    ran_y = 13//14;
+   }     
+   
+ alarm[0] = random_range(ran_x, ran_y) * 10;//задаём рандомное время таймера
+
+}

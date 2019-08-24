@@ -1,0 +1,221 @@
+// 2019-08-24 18:42:35
+#event create
+var dispW, dispH, file, fileCheck;
+globalvar main_menu_active;
+main_menu_active = 1;
+
+if (file_exists("lang.txt")) {
+    file = file_text_open_read("lang.txt");
+    language = file_text_read_real(file);
+    file_text_close(file);
+ }
+  else {
+      file = file_text_open_write("lang.txt");
+      file_text_write_real(file, 0);
+      file_text_close(file);
+  }
+
+space = 64;
+mpos = 0;
+
+optionsFileCreate();
+
+steam_fileAppID();
+
+moneyFileCreate();
+
+/*skin1DataFileCreate();
+skin2DataFileCreate();
+skin3DataFileCreate();
+skin4DataFileCreate();
+
+bonus1DataFileCreate();
+bonus2DataFileCreate();
+bonus3DataFileCreate();
+bonus4DataFileCreate();
+*/
+//FIX FOR DISPLAY//
+dispW = display_get_width();
+dispH = display_get_height();
+
+if (dispW == 1920 && dispH == 1080) {
+    x = (display_get_width() / 2) - 670;
+    y = display_get_height() / 2; 
+ }
+  else if (dispW == 1680 && dispH == 1050) {
+      x = (display_get_width() / 2) - 670;
+      y = display_get_height() / 2;
+  }
+  else if (dispW == 1600 && dispH == 900 ) {
+      x = (display_get_width() / 2 - 580);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1440 && dispH == 900) {
+      x = (display_get_width() / 2 - 530);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1400 && dispH == 1050) {
+      x = (display_get_width() / 2 - 540);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1366 && dispH == 768) {
+      x = (display_get_width() / 2 - 520);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1360 && dispH == 768) {
+      x = (display_get_width() / 2 - 520);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 1024) {
+      x = (display_get_width() / 2 - 500);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 960) {
+      x = (display_get_width() / 2 - 490);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 800) {
+      x = (display_get_width() / 2 - 460);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 768) {
+      x = (display_get_width() / 2 - 460);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 720) {
+      x = (display_get_width() / 2 - 460);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1280 && dispH == 600) {
+      x = (display_get_width() / 2 - 460);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1152 && dispH == 864) {
+      x = (display_get_width() / 2 - 460);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 1024 && dispH == 768) {
+      x = (display_get_width() / 2 - 385);
+      y =  display_get_height() / 2;
+  }
+  else if (dispW == 800 && dispH == 600) {
+      x = (display_get_width() / 2 - 260);
+      y =  display_get_height() / 2;
+  }
+////////////////////
+
+
+window_set_cursor(cr_default);
+
+#event step
+gamepadSupport();
+
+switch (language) {
+    case 0 : {
+        menuButton[0] = "Start";
+
+        //menuButton[1] = " "; //"Shop (Work in process)";
+
+        menuButton[1] = "Options";  //"Options";
+
+
+        menuButton[2] = "Credits";
+
+
+        menuButton[3] = "Exit";
+    }
+    break;
+    
+    case 1 : {
+        menuButton[0] = "Старт";
+
+        //menuButton[1] = " "; //"Shop (Work in process)";
+
+        menuButton[1] = "Настройки";  //"Options";
+
+
+        menuButton[2] = "Титры";
+
+
+        menuButton[3] = "Выход";
+    }
+    break;
+}
+
+    /*menuButton[0] = "Start";
+
+    //menuButton[1] = " "; //"Shop (Work in process)";
+
+    menuButton[1] = "Options";  //"Options";
+
+
+    menuButton[2] = "Credits";
+
+
+    menuButton[3] = "Exit";
+*/
+
+if (main_menu_active == 1) {
+    var move = 0;
+
+    if (global.gamepad_realCount > 0) {
+        move -= max(gamepad_button_check_pressed(current_id, gp_padu), 0);
+        move += max(gamepad_button_check_pressed(current_id, gp_padd), 0);
+    }
+
+    move -= max(keyboard_check_pressed(vk_up), keyboard_check_pressed(ord("W")), mouse_wheel_up(), 0);
+    move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(ord("S")), mouse_wheel_down(), 0);
+
+    if (move != 0) {
+        mpos += move;
+        audio_play_sound(snd_buttonRollOver, 0, false);
+   
+        if (mpos < 0) mpos = array_length_1d(menuButton) - 1;
+        if (mpos > array_length_1d(menuButton) - 1) mpos = 0;
+  }
+ 
+    var buttonClick, buttonReleased;
+
+    if (global.gamepad_realCount > 0){
+        buttonClick = max(keyboard_check_pressed(vk_enter), keyboard_check_pressed(vk_space), gamepad_button_check_pressed(current_id, gp_face1), mouse_check_button_pressed(mb_left), 0);
+        buttonReleased = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), gamepad_button_check_released(current_id, gp_face1), mouse_check_button_released(mb_left), 0);
+   }
+     else {
+        buttonClick = max(keyboard_check_pressed(vk_enter), keyboard_check_pressed(vk_space), mouse_check_button_pressed(mb_left), 0);
+        buttonReleased = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), mouse_check_button_released(mb_left), 0);
+    }
+
+    if (buttonClick == 1) audio_play_sound(snd_buttonClick, 0, false);
+    
+    if (buttonReleased == 1) {
+        audio_play_sound(snd_buttonClickReleased, 0, false);
+        menuScript();
+    }
+}
+
+#event draw
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+draw_set_font(font_menu);
+draw_set_color(c_white);
+
+var m;
+
+/*for (m = 0; m < array_length_1d(menuButton); m++) {
+    draw_text(x + space, y + 2 * (m * space), string(menuButton[m]));
+}
+*/
+
+if (main_menu_active == 1) {
+    for (m = 0; m < array_length_1d(menuButton); m++) {
+        draw_text(x + space, y + 1.8 * (m * space), string(menuButton[m]));
+ }
+    draw_sprite(spr_arrow, 0, x - 16, y + 1.8 * (mpos * space));
+ }
+  else {
+      //draw_sprite(sUi_frame, 0, x + 400, y + 150);
+      
+      for (m = 0; m < array_length_1d(menuButton); m++) {
+          draw_text(x + space, y + 1.8 * (m * space), string(menuButton[m]));
+        }
+  }
