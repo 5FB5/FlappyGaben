@@ -28,6 +28,7 @@
   <sprites name="sprites">
     <sprites name="achievements">
       <sprite>sprites\spr_achievTest</sprite>
+      <sprite>sprites\spr_achiev_maks</sprite>
     </sprites>
     <sprites name="menu">
       <sprite>sprites\spr_arrow</sprite>
@@ -135,6 +136,9 @@
           <script>scripts\bonus3DataFileCreate.gml</script>
           <script>scripts\bonus4DataFileCreate.gml</script>
         </scripts>
+        <scripts name="achievements">
+          <script>scripts\file_achievMaks_create.gml</script>
+        </scripts>
       </scripts>
       <scripts name="game">
         <script>scripts\dialogBox_drawing.gml</script>
@@ -181,10 +185,14 @@
     <font>fonts\font_achievement</font>
     <font>fonts\font_score</font>
     <font>fonts\font_text</font>
-    <font>fonts\font_hl</font>
     <font>fonts\fnt_arial</font>
+    <font>fonts\font_hl</font>
     <font>fonts\font_shopText</font>
     <font>fonts\font_moneyText</font>
+    <fonts name="achievements">
+      <font>fonts\font_ach_name</font>
+      <font>fonts\font_ach_text</font>
+    </fonts>
   </fonts>
   <objects name="objects">
     <objects name="techicalObj">
@@ -297,6 +305,9 @@
     <objects name="achievements">
       <objects name="test">
         <object>objects\obj_achTest</object>
+      </objects>
+      <objects name="maks">
+        <object>objects\obj_ach_maks</object>
       </objects>
     </objects>
   </objects>

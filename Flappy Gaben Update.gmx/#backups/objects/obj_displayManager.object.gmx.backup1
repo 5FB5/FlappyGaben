@@ -1,4 +1,4 @@
-// 2019-08-24 19:28:16
+// 2019-08-25 17:02:12
 #event create
 gamepadSupport();
 
@@ -37,6 +37,8 @@ language = 0;
 
 winW = window_get_width();
 winH = window_get_height();
+
+file_achievMaks_create();
 
 //globalvar globalMusic, globalSound, fileMusic, fileSound;
 
@@ -104,6 +106,41 @@ if (keyboard_check(vk_f6)) {
   else if (keyboard_check(vk_f7)) {
       show_debug_overlay(false);
   }
+  
+  
+  
+// Easter eggs
+if (file_exists("achiev1.txt")) {
+    achMaksFile = file_text_open_read("achiev1.txt");
+    achMaksValue = file_text_read_real(achMaksFile);
+    file_text_close(achMaksFile);
+    
+    if (achMaksValue == 0)
+        easter_maks_activate = 0
+        else easter_maks_activate = 1;
+    
+}
+
+
+if (keyboard_check_pressed(ord("M")) && keyboard_check_pressed(ord("A")) && keyboard_check_pressed(ord("K")) && keyboard_check_pressed(ord("S")) && easter_maks_activate == 0) {
+    instance_create(0, 0, obj_ach_maks);
+    easter_maks_activate = 1;
+    
+    if (file_exists("achiev1.txt")) {
+        ach1MaksFile = file_text_open_write("achiev1.txt");
+        file_text_write_real(ach1File, easter_maks_activate);
+        file_text_close(ach1MaksFile);
+    }
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 #event draw_gui
 draw_set_halign(fa_left);
@@ -130,7 +167,8 @@ switch (dev) {
         draw_text(x, y + 40, "display width " +string(display_get_width()));
         draw_text(x, y + 80, "display heigth " +string(display_get_height() ) );
 
-        if (room == r_gameplay) draw_text(x, y + 200, "global.defeat =  " +string(global.defeat));
+        if (room == r_gameplay) 
+            draw_text(x, y + 200, "global.defeat =  " +string(global.defeat));
 
         draw_text(x, y + 240, "mouse x =  " +string(mouse_x));
         draw_text(x, y + 290, "mouse y =  " +string(mouse_y));

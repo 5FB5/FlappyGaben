@@ -29,9 +29,9 @@ draw_set_color(c_white);
 draw_set_alpha(1);
 */
 
-draw_set_font(font_debug);
+draw_set_font(font_ach_text);
 draw_text(posX + 17, posY + 60, text); // Text
 
-draw_set_font(fnt_arial);
+draw_set_font(font_ach_name);
 draw_text(posX + 15, posY + 15, +string(title)); //Title
 //-------------------------------------------------------
