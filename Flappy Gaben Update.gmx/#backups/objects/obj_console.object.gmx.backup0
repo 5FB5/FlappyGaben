@@ -1,4 +1,4 @@
-// 2019-08-24 18:34:09
+// 2019-09-01 12:10:56
 #event create
 my_console = console_create();
 
@@ -33,16 +33,23 @@ console_add(my_console, "dev");
 console_add(my_console, "map"+s+"<0-menu, 1-game, 2-shop, 3-shopList2, 4-credits, 5-archTest>");
 console_add(my_console, "quit");
 console_add(my_console, "player set_money");
+console_add(my_console, "player set_score");
 console_add(my_console, "set_vsync");
 
 console_add(my_console, "file set_skinData1");
 console_add(my_console, "file set_skinData2");
 console_add(my_console, "file set_skinData3");
 console_add(my_console, "file set_skinData4");
+
 console_add(my_console, "file set_bonusData1");
 console_add(my_console, "file set_bonusData2");
 console_add(my_console, "file set_bonusData3");
 console_add(my_console, "file set_bonusData4");
+
+console_add(my_console, "file set_ach1Data");
+console_add(my_console, "file set_ach2Data");
+console_add(my_console, "file set_ach3Data");
+console_add(my_console, "file set_ach4Data");
 
 #event destroy
 /*****************************
@@ -62,6 +69,13 @@ if console_submit(my_console) {
        file = file_text_open_write("playerMoney.txt");
        file_text_write_real(file, Money);
        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "player set_score") {
+        if (roomName == "r_gameplay") {
+            m_playerScore = console_value(my_console, 1);
+            global._playerScore = m_playerScore;
+        }
     }
 
     if console_cmd(my_console, "set_vsync") { // vsync off/on
@@ -167,6 +181,38 @@ if console_submit(my_console) {
         file = file_text_open_write("bonusData4.txt");
         file_text_write_real(file, value);
         file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_ach1Data") {
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev1.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_ach2Data") {
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev2.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_ach3Data") {
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev3.txt");
+        file_text_write_real(file, value);
+        file_text_close(file);
+    }
+    
+    if console_cmd(my_console, "file set_ach4Data") {
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev4.txt");
+        file_text_write_real(file, value);
+        file_text_close(file); 
     }
     
 }

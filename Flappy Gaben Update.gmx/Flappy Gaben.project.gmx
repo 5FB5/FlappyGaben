@@ -138,6 +138,9 @@
         </scripts>
         <scripts name="achievements">
           <script>scripts\file_achievMaks_create.gml</script>
+          <script>scripts\file_achievNewYear_create.gml</script>
+          <script>scripts\file_achievTubes50_create.gml</script>
+          <script>scripts\file_achievMoney100_create.gml</script>
         </scripts>
       </scripts>
       <scripts name="game">
@@ -308,6 +311,15 @@
       </objects>
       <objects name="maks">
         <object>objects\obj_ach_maks</object>
+      </objects>
+      <objects name="newYear">
+        <object>objects\obj_ach_newYear</object>
+      </objects>
+      <objects name="50_tubes">
+        <object>objects\obj_ach_50Tubes</object>
+      </objects>
+      <objects name="100_money">
+        <object>objects\obj_ach_100Money</object>
       </objects>
     </objects>
   </objects>
