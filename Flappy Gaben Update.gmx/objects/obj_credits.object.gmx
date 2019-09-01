@@ -131,103 +131,47 @@ draw_text_ext((window_get_width() / 2) - 200, y + 650, "Flappy Gaben", 10, -10);
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_set_font(font_dialog);
-draw_text_ext((window_get_width() / 2) - 430, y + 1050, "
+draw_text_ext((window_get_width() / 2) - 430, y + 930, "
+5FB5 - Programming, game art, sounds
 
 
 
 
 
+Blackhand911 - Programming
 
 
 
 
 
+Demilaris - Tester
 
 
 
 
 
+Ilya Chiriev - Tester
 
 
-Artyom Zubko (Blackhand911) - Developer, tester
 
 
 
+Sergei Vidra - Tester
 
 
 
 
-Lera Zanina (Demilaris) - Tester
 
+Maksim Khmara - Tester
 
 
 
 
 
 
-Maksim Khmara (Cloud) - Tester
 
 
-
-
-
-
-
-Sergey Vydra - Tester
-
-
-
-
-
-
-
-Ilya Chyriev - Tester
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Valery Zubko (vazub01) - Idea, developer",10,-10)
+",10,-10)
 draw_set_color(c_white)
 
 

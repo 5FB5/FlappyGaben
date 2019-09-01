@@ -1,4 +1,4 @@
-// 2018-10-13 14:41:29
+// 2019-09-01 16:17:38
 #event create
 y = window_get_height() / 2;
 
@@ -37,7 +37,7 @@ if (gamepad_realCount > 0) {
 room_goto(r_menu);
 
 #event draw
-/*draw_set_halign(fa_left);
+draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_set_font(font_hl);
 //draw_text_ext((window_get_width() / 2) - 430, y + 650, "Flappy Gaben", 10, -10);
@@ -46,326 +46,46 @@ draw_text_ext((window_get_width() / 2) - 200, y + 650, "Flappy Gaben", 10, -10);
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_set_font(font_dialog);
-draw_text_ext((window_get_width() / 2) - 430, y + 1050, "
+draw_text_ext((window_get_width() / 2) - 430, y + 900, "
+5FB5 - Programming, game art, sounds
 
 
 
 
 
+Blackhand911 - Programming
 
 
 
 
 
+Demilaris - Tester
 
 
 
 
 
+Ilya Chiriev - Tester
 
 
-Artyom Zubko (Blackhand911) - Developer, tester
 
 
 
+Sergei Vidra - Tester
 
 
 
 
-Lera Zanina (Demilaris) - Tester
 
+Maksim Khmara - Tester
 
 
 
 
 
 
-Maksim Khmara (Cloud) - Tester
 
 
-
-
-
-
-
-Sergey Vydra - Tester
-
-
-
-
-
-
-
-Ilya Chyriev - Tester
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Valery Zubko (vazub01) - Idea, developer",10,-10)
+",10,-10)
 draw_set_color(c_white)
-*/
 
-switch(langs) {
-    case 0 : {
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-    draw_set_font(font_hl);
-    //draw_text_ext((window_get_width() / 2) - 430, y + 650, "Flappy Gaben", 10, -10);
-    draw_text_ext((window_get_width() / 2) - 200, y + 650, "Flappy Gaben", 10, -10);
-
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-    draw_set_font(font_dialog);
-draw_text_ext((window_get_width() / 2) - 430, y + 1050, "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Artyom Zubko (Blackhand911) - Developer, tester
-
-
-
-
-
-
-
-Lera Zanina (Demilaris) - Tester
-
-
-
-
-
-
-
-Maksim Khmara (Cloud) - Tester
-
-
-
-
-
-
-
-Sergey Vydra - Tester
-
-
-
-
-
-
-
-Ilya Chyriev - Tester
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Valery Zubko (vazub01) - Idea, developer",10,-10)
-    draw_set_color(c_white)
-    }
-    break;
-    
-case 1 : {
-    draw_set_halign(fa_left);
-draw_set_valign(fa_middle);
-draw_set_font(font_hl);
-//draw_text_ext((window_get_width() / 2) - 430, y + 650, "Flappy Gaben", 10, -10);
-draw_text_ext((window_get_width() / 2) - 200, y + 650, "Flappy Gaben", 10, -10);
-
-draw_set_halign(fa_left);
-draw_set_valign(fa_middle);
-draw_set_font(font_dialog);
-draw_text_ext((window_get_width() / 2) - 430, y + 1050, "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Артём Зубко (Blackhand911) - Программист, тестер
-
-
-
-
-
-
-
-Валерия Занина (Demilaris) - Тестер
-
-
-
-
-
-
-
-Максим Хмара (Туча) - Тестер
-
-
-
-
-
-
-
-Сергей Выдра - Тестер
-
-
-
-
-
-
-
-Илья Чирьев - Тестер
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Валерий Зубко (vazub01) - Идея, программист",10,-10)
-draw_set_color(c_white)
- }
- break;
-}
