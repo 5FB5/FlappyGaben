@@ -1,4 +1,4 @@
-// 2019-09-01 12:14:04
+// 2019-09-01 12:15:34
 #event create
 depth = -10000;
 x = (winW / 2) - 300; //- 800;
@@ -40,7 +40,7 @@ switch(language) {
                             )
             break;
     case 1: gui_createFrame(self.x, self.y, 600, 150, 1, "Достижение Получено!",
-                                                +string("Собрать всего 100 монет")
+                                                +string("Собрать 100 монет")
                                                  
                             )
             break;

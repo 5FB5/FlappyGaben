@@ -24,6 +24,10 @@
       <sound>sound\snd_error</sound>
       <sound>sound\snd_achievement</sound>
     </sounds>
+    <sounds name="easter">
+      <sound>sound\snd_easterHL3</sound>
+      <sound>sound\snd_easterFNAF</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="achievements">
@@ -141,6 +145,12 @@
           <script>scripts\file_achievNewYear_create.gml</script>
           <script>scripts\file_achievTubes50_create.gml</script>
           <script>scripts\file_achievMoney100_create.gml</script>
+          <script>scripts\file_achievMoney500_create.gml</script>
+          <script>scripts\file_achievMoney1000_create.gml</script>
+        </scripts>
+        <scripts name="easter">
+          <script>scripts\file_easterHl3.gml</script>
+          <script>scripts\file_easterFnaf.gml</script>
         </scripts>
       </scripts>
       <scripts name="game">
@@ -320,6 +330,12 @@
       </objects>
       <objects name="100_money">
         <object>objects\obj_ach_100Money</object>
+      </objects>
+      <objects name="500_money">
+        <object>objects\obj_ach_500Money</object>
+      </objects>
+      <objects name="1000_money">
+        <object>objects\obj_ach_1000Money</object>
       </objects>
     </objects>
   </objects>
