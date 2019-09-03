@@ -32,6 +32,10 @@
   <sprites name="sprites">
     <sprites name="achievements">
       <sprite>sprites\spr_achievTest</sprite>
+      <sprite>sprites\spr_achiev50tubes</sprite>
+      <sprite>sprites\spr_achiev100Money</sprite>
+      <sprite>sprites\spr_achiev500Money</sprite>
+      <sprite>sprites\spr_achiev1000Money</sprite>
       <sprite>sprites\spr_achiev_maks</sprite>
     </sprites>
     <sprites name="menu">

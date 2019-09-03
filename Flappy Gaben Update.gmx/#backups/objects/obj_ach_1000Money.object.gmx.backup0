@@ -1,4 +1,4 @@
-// 2019-09-02 18:18:12
+// 2019-09-03 18:33:56
 #event create
 depth = -10000;
 x = (winW / 2) - 300; //- 800;
@@ -48,4 +48,4 @@ switch(language) {
 
 
 //Achievement's icon
-draw_sprite(spr_achievTest, 0, self.x + 500, self.y + 80);
+draw_sprite(spr_achiev1000Money, 0, self.x + 500, self.y + 80);

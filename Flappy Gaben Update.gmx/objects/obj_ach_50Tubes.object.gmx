@@ -153,7 +153,7 @@ switch(language) {
 
 
 //Achievement's icon
-draw_sprite(spr_achievTest, 0, self.x + 500, self.y + 80);
+draw_sprite(spr_achiev50tubes, 0, self.x + 500, self.y + 80);
 </string>
           </argument>
         </arguments>

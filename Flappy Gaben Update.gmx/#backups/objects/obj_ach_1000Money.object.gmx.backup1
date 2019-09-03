@@ -1,4 +1,4 @@
-// 2019-09-03 18:32:35
+// 2019-09-02 18:18:12
 #event create
 depth = -10000;
 x = (winW / 2) - 300; //- 800;
@@ -35,12 +35,12 @@ if (active == true) {
 // Achievement info
 switch(language) {
     case 0: gui_createFrame(self.x, self.y, 600, 150, 1, "Achievement Unlocked!",
-                                                +string("Collect 100 Coins")
+                                                +string("Collect 1000 Coins")
                                                  
                             )
             break;
     case 1: gui_createFrame(self.x, self.y, 600, 150, 1, "Достижение Получено!",
-                                                +string("Собрать 100 монет")
+                                                +string("Собрать 1000 монет")
                                                  
                             )
             break;
@@ -48,4 +48,4 @@ switch(language) {
 
 
 //Achievement's icon
-draw_sprite(spr_achiev100Money, 0, self.x + 500, self.y + 80);
+draw_sprite(spr_achievTest, 0, self.x + 500, self.y + 80);
