@@ -25,15 +25,51 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//x = display_get_width() / 2 - 780;
-//y = display_get_height() / 2;
+            <string>var file1Open, file2Open, file3Open, file4Open, skinData1, skinData2, skinData3, skinData4; 
+skinData1 = 0;
+skinData2 = 0;
+skinData3 = 0;
+skinData4 = 0;
+file1Open = 0;
+file2Open = 0;
+file3Open = 0;
+file4Open = 0;
 
-skinButton[0] = "BUY";
-skinButton[1] = "BUY";
-skinButton[2] = "BUY";
-skinButton[3] = "BUY";
-skinButton[4] = "Next";
-skinButton[5] = "Menu";
+// check localization file
+if (file_exists("lang.txt")) {
+    file = file_text_open_read("lang.txt");
+    language = file_text_read_real(file);
+    file_text_close(file);
+ }
+  else {
+      file = file_text_open_write("lang.txt");
+      file_text_write_real(file, 0);
+      file_text_close(file);
+  }
+
+switch(language) {
+    case 0: {
+        skinButton[0] = "Buy";
+        skinButton[1] = "Buy";
+        skinButton[2] = "Buy";
+        skinButton[3] = "Buy";
+        skinButton[4] = "Next";
+        skinButton[5] = "Menu";
+        
+        break;
+    }
+    
+    case 1: {
+        skinButton[0] = "Купить";
+        skinButton[1] = "Купить";
+        skinButton[2] = "Купить";
+        skinButton[3] = "Купить";
+        skinButton[4] = "След";
+        skinButton[5] = "Меню";
+        
+        break;
+    }
+}
 
 space = 64;
 mpos = 0;
@@ -60,9 +96,8 @@ mpos = 0;
           <argument>
             <kind>1</kind>
             <string>gamepadSupport();
-var file1Open, file2Open, file3Open, file4Open, skinData1, skinData2, skinData3, skinData4; 
 
-////////////////CHECKING FILES///////////////////////////////////
+// check files
 file1Open = file_text_open_read("skinData1.txt");
 skinData1 = file_text_read_real(file1Open);
 file_text_close(file1Open);
@@ -79,23 +114,44 @@ file4Open = file_text_open_read("skinData4.txt");
 skinData4 = file_text_read_real(file4Open);
 file_text_close(file4Open);
 
-if (skinData1 == 1) {
-   skinButton[0] = "Bought";
+// check, is our skin|bonus bought or not
+switch(language) {
+    case 0: {
+        if (skinData1 == 1) {
+            skinButton[0] = "Bought";
+        }
+
+        if (skinData2 == 1) {
+            skinButton[1] = "Bought";
+        }
+
+        if (skinData3 == 1) {
+            skinButton[2] = "Bought";
+        }
+
+        if (skinData4 == 1) {
+            skinButton[3] = "Bought";
+        }
+        break;
+    }
+    case 1: {
+        if (skinData1 == 1) {
+            skinButton[0] = "Куплен";
+        }
+         else if (skinData2 == 1) {
+            skinButton[1] = "Куплен";
+        }
+         else if (skinData3 == 1) {
+            skinButton[2] = "Куплен";
+        }
+         else if (skinData4 == 1) {
+            skinButton[3] = "Куплен";
+        }
+        break;
+    }
 }
 
-if (skinData2 == 1) {
-   skinButton[1] = "Bought";
-}
-
-if (skinData3 == 1) {
-   skinButton[2] = "Bought";
-}
-
-if (skinData4 == 1) {
-   skinButton[3] = "Bought";
-}
-////////////////////////////////////////////////////////////////
-
+// menu buttons
 var move = 0;
 
 if (global.gamepad_realCount &gt; 0) {

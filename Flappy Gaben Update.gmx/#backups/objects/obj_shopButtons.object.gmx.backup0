@@ -1,0 +1,154 @@
+// 2019-10-09 22:08:54
+#event create
+var file1Open, file2Open, file3Open, file4Open, skinData1, skinData2, skinData3, skinData4; 
+skinData1 = 0;
+skinData2 = 0;
+skinData3 = 0;
+skinData4 = 0;
+file1Open = 0;
+file2Open = 0;
+file3Open = 0;
+file4Open = 0;
+
+// check localization file
+if (file_exists("lang.txt")) {
+    file = file_text_open_read("lang.txt");
+    language = file_text_read_real(file);
+    file_text_close(file);
+ }
+  else {
+      file = file_text_open_write("lang.txt");
+      file_text_write_real(file, 0);
+      file_text_close(file);
+  }
+
+switch(language) {
+    case 0: {
+        skinButton[0] = "Buy";
+        skinButton[1] = "Buy";
+        skinButton[2] = "Buy";
+        skinButton[3] = "Buy";
+        skinButton[4] = "Next";
+        skinButton[5] = "Menu";
+        
+        break;
+    }
+    
+    case 1: {
+        skinButton[0] = "Купить";
+        skinButton[1] = "Купить";
+        skinButton[2] = "Купить";
+        skinButton[3] = "Купить";
+        skinButton[4] = "След";
+        skinButton[5] = "Меню";
+        
+        break;
+    }
+}
+
+space = 64;
+mpos = 0;
+
+#event step
+gamepadSupport();
+
+// check files
+file1Open = file_text_open_read("skinData1.txt");
+skinData1 = file_text_read_real(file1Open);
+file_text_close(file1Open);
+
+file2Open = file_text_open_read("skinData2.txt");
+skinData2 = file_text_read_real(file2Open);
+file_text_close(file2Open);
+
+file3Open = file_text_open_read("skinData3.txt");
+skinData3 = file_text_read_real(file3Open);
+file_text_close(file3Open);
+
+file4Open = file_text_open_read("skinData4.txt");
+skinData4 = file_text_read_real(file4Open);
+file_text_close(file4Open);
+
+// check, is our skin|bonus bought or not
+switch(language) {
+    case 0: {
+        if (skinData1 == 1) {
+            skinButton[0] = "Bought";
+        }
+
+        if (skinData2 == 1) {
+            skinButton[1] = "Bought";
+        }
+
+        if (skinData3 == 1) {
+            skinButton[2] = "Bought";
+        }
+
+        if (skinData4 == 1) {
+            skinButton[3] = "Bought";
+        }
+        break;
+    }
+    case 1: {
+        if (skinData1 == 1) {
+            skinButton[0] = "Куплен";
+        }
+         else if (skinData2 == 1) {
+            skinButton[1] = "Куплен";
+        }
+         else if (skinData3 == 1) {
+            skinButton[2] = "Куплен";
+        }
+         else if (skinData4 == 1) {
+            skinButton[3] = "Куплен";
+        }
+        break;
+    }
+}
+
+// menu buttons
+var move = 0;
+
+if (global.gamepad_realCount > 0) {
+    move -= max(gamepad_button_check_pressed(current_id, gp_padl), 0);
+    move += max(gamepad_button_check_pressed(current_id, gp_padr), 0);
+ }
+
+move -= max(keyboard_check_pressed(vk_left), keyboard_check_pressed(ord("A")), 0);
+move += max(keyboard_check_pressed(vk_right), keyboard_check_pressed(ord("D")), 0);
+
+if (move != 0) {
+   mpos += move;
+   audio_play_sound(snd_buttonRollOver, 0, false);
+   
+   if (mpos < 0) mpos = array_length_1d(skinButton) - 1;
+   if (mpos > array_length_1d(skinButton) - 1) mpos = 0;
+ }
+ 
+var push;
+
+if (global.gamepad_realCount > 0){
+   push = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), gamepad_button_check_released(current_id, gp_face1), 0);
+ }
+  else {
+     push = max(keyboard_check_released(vk_enter), keyboard_check_released(vk_space), 0);
+  }
+
+if (push == 1) { 
+    audio_play_sound(snd_buttonClick, 0, false);
+    shopScript();
+ }
+
+#event draw
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+draw_set_font(font_menu);
+draw_set_color(c_white);
+
+var m;
+
+for (m = 0; m < array_length_1d(skinButton); m++) {
+    draw_text(x + (m * space * 5), y, string(skinButton[m]));
+}
+
+draw_sprite(spr_arrow, 0, x + (x * (mpos * 5)) + 60, y + (m * space) - 280);

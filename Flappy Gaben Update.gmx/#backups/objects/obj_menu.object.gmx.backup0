@@ -1,4 +1,4 @@
-// 2019-08-24 18:42:44
+// 2019-10-09 22:22:31
 #event create
 var dispW, dispH, file, fileCheck;
 globalvar main_menu_active;
@@ -34,6 +34,7 @@ bonus2DataFileCreate();
 bonus3DataFileCreate();
 bonus4DataFileCreate();
 */
+
 //FIX FOR DISPLAY//
 dispW = display_get_width();
 dispH = display_get_height();
@@ -114,13 +115,9 @@ switch (language) {
     case 0 : {
         menuButton[0] = "Start";
 
-        //menuButton[1] = " "; //"Shop (Work in process)";
-
-        menuButton[1] = "Options";  //"Options";
-
-
+        menuButton[1] = "Options";
+        
         menuButton[2] = "Credits";
-
 
         menuButton[3] = "Exit";
     }
@@ -128,32 +125,17 @@ switch (language) {
     
     case 1 : {
         menuButton[0] = "Старт";
-
-        //menuButton[1] = " "; //"Shop (Work in process)";
-
-        menuButton[1] = "Настройки";  //"Options";
-
+        
+        menuButton[1] = "Настройки";
 
         menuButton[2] = "Титры";
-
 
         menuButton[3] = "Выход";
     }
     break;
+    
+    default : break;
 }
-
-    /*menuButton[0] = "Start";
-
-    //menuButton[1] = " "; //"Shop (Work in process)";
-
-    menuButton[1] = "Options";  //"Options";
-
-
-    menuButton[2] = "Credits";
-
-
-    menuButton[3] = "Exit";
-*/
 
 if (main_menu_active == 1) {
     var move = 0;

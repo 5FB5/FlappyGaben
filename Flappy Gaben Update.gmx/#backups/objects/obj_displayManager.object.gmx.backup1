@@ -1,4 +1,4 @@
-// 2019-09-02 18:16:48
+// 2019-10-09 21:42:11
 #event create
 gamepadSupport();
 
@@ -93,7 +93,6 @@ audio_sound_gain(snd_score, globalSound, 0);
 audio_sound_gain(snd_swing, globalSound, 0);
 audio_sound_gain(snd_easterHL3, globalSound, 0);
 
-//show_debug_overlay(true);
 
 #event step
 
@@ -102,7 +101,6 @@ audio_sound_gain(mus_gabenSong, globalMusic, 0);
 audio_sound_gain(mus_stopGaben, globalMusic, 0);
 audio_sound_gain(mus_xmas, globalMusic, 0);
 audio_sound_gain(mus_sector_sweep, globalMusic, 0);
-
 
 audio_sound_gain(snd_buttonClick, globalSound, 0);
 audio_sound_gain(snd_buttonClickReleased, globalSound, 0);
@@ -120,8 +118,6 @@ if (keyboard_check(vk_f6)) {
       show_debug_overlay(false);
   }
   
-  
-  
 // EASTER EGGS AND ACHIEVEMENTS
 
 // be like maks
@@ -136,7 +132,6 @@ if (file_exists("achiev1.txt")) {
     
 }
 
-
 if (keyboard_check_pressed(ord("M")) && keyboard_check_pressed(ord("A")) && keyboard_check_pressed(ord("K")) && keyboard_check_pressed(ord("S")) && easter_maks_activate == 0) {
     instance_create(0, 0, obj_ach_maks);
     easter_maks_activate = 1;
@@ -150,56 +145,12 @@ if (keyboard_check_pressed(ord("M")) && keyboard_check_pressed(ord("A")) && keyb
 
 
 // hl3
-if (file_exists("h.txt")) {
-    hFile = file_text_open_read("h.txt");
-    hValue = file_text_read_real(hFile);
-    file_text_close(hFile);
-    
-    if (hValue == 0)
-        easter_hl3_activate = 0
-        else easter_hl3_activate = 1;
-    
-}
-
 // TODO: I don't know, but it's not working and I must fix it
 if (roomName == "r_menu") {
-    if (keyboard_check_pressed(ord("G")) && keyboard_check_pressed(ord("A")) && keyboard_check_pressed(ord("B")) && keyboard_check_pressed(ord("E")) && easter_hl3_activate == 0) {
-        audio_play_sound(snd_easterHL3, 1, false);
-        easter_hl3_activate = 1;
-    
-        if (file_exists("h.txt")) {
-            hFile = file_text_open_write("h.txt");
-            file_text_write_real(hFile, easter_hl3_activate);
-            file_text_close(hFile);
-        }
+    if (keyboard_check(vk_numpad3)) {
+        audio_play_sound(snd_easterHL3, 0, false); // it didn't works, fucking gml :)
     }
 }
-
-// fnaf
-if (file_exists("f.txt")) {
-    fFile = file_text_open_read("f.txt");
-    fValue = file_text_read_real(fFile);
-    file_text_close(fFile);
-    
-    if (fValue == 0)
-        easter_fnaf_activate = 0
-        else easter_fnaf_activate = 1;
-    
-}
-
-/*  TODO: I need to create another method to activate this easter
-if (keyboard_check_pressed(ord("G")) && keyboard_check_pressed(ord("A")) && keyboard_check_pressed(ord("B")) && keyboard_check_pressed(ord("E")) && easter_hl3_activate == 0) {
-    audio_play_sound(snd_easterHL3, 0, false);
-    easter_hl3_activate = 1;
-    
-    if (file_exists("h.txt")) {
-        hFile = file_text_open_write("h.txt");
-        file_text_write_real(hFile, easter_hl3_activate);
-        file_text_close(hFile);
-    }
-}
-*/
-
 
 // new year
 if (file_exists("achiev2.txt")) {
@@ -284,7 +235,7 @@ if (file_exists("achiev5.txt")) {
 }
 
 if (roomName == "r_gameplay" && money500_activate == 0) {
-    if (fileResult_money >= 100) {
+    if (fileResult_money >= 500) {
         instance_create(0, 0, obj_ach_500Money);
         money500_activate = 1;
         

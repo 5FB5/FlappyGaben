@@ -55,7 +55,7 @@ console_preset(my_console);
 *****************************/
 
 console_add(my_console, "dev");
-console_add(my_console, "map"+s+"&lt;0-menu, 1-game, 2-shop, 3-shopList2, 4-credits, 5-archTest&gt;");
+console_add(my_console, "map"+s+" 0-menu, 1-game, 2-shop, 3-shopList2, 4-credits, 5-archTest ");
 console_add(my_console, "quit");
 console_add(my_console, "player set_money");
 console_add(my_console, "player set_score");
@@ -75,6 +75,8 @@ console_add(my_console, "file set_ach1Data");
 console_add(my_console, "file set_ach2Data");
 console_add(my_console, "file set_ach3Data");
 console_add(my_console, "file set_ach4Data");
+console_add(my_console, "file set_ach5Data");
+console_add(my_console, "file set_ach6Data");
 </string>
           </argument>
         </arguments>
@@ -184,7 +186,7 @@ if console_submit(my_console) {
         
     }
     
-    if console_cmd(my_console, "file set_skinData1") { //SKINDATA1
+    if console_cmd(my_console, "file set_skinData1") { // activate 1 skin
         value = console_value(my_console, 1);
         
         file = file_text_open_write("skinData1.txt");
@@ -192,7 +194,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_skinData2") { //SKINDATA2
+    if console_cmd(my_console, "file set_skinData2") { // activate 2 skin
         value = console_value(my_console, 1);
         
         file = file_text_open_write("skinData2.txt");
@@ -200,7 +202,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_skinData3") { //SKINDATA3
+    if console_cmd(my_console, "file set_skinData3") { // activate 3 skin
         value = console_value(my_console, 1);
         
         file = file_text_open_write("skinData3.txt");
@@ -208,7 +210,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_skinData4") { //SKINDATA4
+    if console_cmd(my_console, "file set_skinData4") { // activate 4 skin
         value = console_value(my_console, 1);
         
         file = file_text_open_write("skinData4.txt");
@@ -216,7 +218,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
 
-    if console_cmd(my_console, "file set_bonusData1") { //BONUS DATA1
+    if console_cmd(my_console, "file set_bonusData1") { // activate 1 bonus
         value = console_value(my_console, 1);
         
         file = file_text_open_write("bonusData1.txt");
@@ -224,7 +226,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_bonusData2") { //BONUS DATA2
+    if console_cmd(my_console, "file set_bonusData2") { // activate 2 bonus
         value = console_value(my_console, 1);
         
         file = file_text_open_write("bonusData2.txt");
@@ -232,7 +234,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_bonusData3") { //BONUS DATA3
+    if console_cmd(my_console, "file set_bonusData3") { // activate 3 bonus
         value = console_value(my_console, 1);
         
         file = file_text_open_write("bonusData3.txt");
@@ -240,7 +242,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_bonusData4") { //BONUS DATA4
+    if console_cmd(my_console, "file set_bonusData4") { // activate 4 bonus
         value = console_value(my_console, 1);
         
         file = file_text_open_write("bonusData4.txt");
@@ -248,7 +250,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_ach1Data") {
+    if console_cmd(my_console, "file set_ach1Data") { // activate "Maks" achievement
         value = console_value(my_console, 1);
         
         file = file_text_open_write("achiev1.txt");
@@ -256,7 +258,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_ach2Data") {
+    if console_cmd(my_console, "file set_ach2Data") { // activate "new year" achievement
         value = console_value(my_console, 1);
         
         file = file_text_open_write("achiev2.txt");
@@ -264,7 +266,7 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_ach3Data") {
+    if console_cmd(my_console, "file set_ach3Data") { // activate "50 tubes" achievement
         value = console_value(my_console, 1);
         
         file = file_text_open_write("achiev3.txt");
@@ -272,10 +274,26 @@ if console_submit(my_console) {
         file_text_close(file);
     }
     
-    if console_cmd(my_console, "file set_ach4Data") {
+    if console_cmd(my_console, "file set_ach4Data") { // activate "100 money" achievement
         value = console_value(my_console, 1);
         
         file = file_text_open_write("achiev4.txt");
+        file_text_write_real(file, value);
+        file_text_close(file); 
+    }
+    
+    if console_cmd(my_console, "file set_ach5Data") { // activate "500 money" achievement
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev5.txt");
+        file_text_write_real(file, value);
+        file_text_close(file); 
+    }
+    
+    if console_cmd(my_console, "file set_ach6Data") { // activate "1000 money" achievement
+        value = console_value(my_console, 1);
+        
+        file = file_text_open_write("achiev6.txt");
         file_text_write_real(file, value);
         file_text_close(file); 
     }

@@ -43,19 +43,21 @@ if (file_exists("lang.txt")) {
 switch (language) {
     case 0 : {
         menuGameButton[0] = "Continue";
-
         menuGameButton[1] = "Menu";
+        menuGameButton[2] = "Close the game";
 
     }
     break;
     
     case 1 : {
         menuGameButton[0] = "Продолжить";
-
         menuGameButton[1] = "Меню";
+        menuGameButton[2] = "Выйти из игры";
 
     }
     break;
+    
+    default : break;
 }
 
 
@@ -105,7 +107,7 @@ move += max(keyboard_check_pressed(vk_down), keyboard_check_pressed(ord("S")), m
 
 if (move != 0) {
    mpos += move;
-   //audio_play_sound(snd_buttonRollOver, 0, false);
+   audio_play_sound(snd_buttonRollOver, 0, false);
    
    if (mpos &lt; 0) mpos = array_length_1d(menuGameButton) - 1;
    if (mpos &gt; array_length_1d(menuGameButton) - 1) mpos = 0;
@@ -121,7 +123,7 @@ if (global.gamepad_realCount &gt; 0){
   }
 
 if (push == 1) {
-   //audio_play_sound(snd_buttonClick, 0, false);
+   audio_play_sound(snd_buttonClick, 0, false);
    menuInGameScript();
  }   
  
