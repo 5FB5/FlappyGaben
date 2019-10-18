@@ -1,3 +1,36 @@
+if (file_exists("lang.txt")) {
+    file = file_text_open_read("lang.txt");
+    language = file_text_read_real(file);
+    file_text_close(file);
+ }
+  else {
+      file = file_text_open_write("lang.txt");
+      file_text_write_real(file, 0);
+      file_text_close(file);
+  }
+
+switch (language) {
+    case 0 : {
+        menuGameButton[0] = "Continue";
+        menuGameButton[1] = "Options";
+        menuGameButton[2] = "Menu";
+        menuGameButton[3] = "Close the game";
+
+    }
+    break;
+    
+    case 1 : {
+        menuGameButton[0] = "Продолжить";
+        menuGameButton[1] = "Настройки";
+        menuGameButton[2] = "Меню";
+        menuGameButton[3] = "Выйти из игры";
+
+    }
+    break;
+    
+    default : break;
+}
+
 obj_player.vspeed = 0;
 obj_player.gravity = 0;
     
@@ -29,7 +62,20 @@ draw_set_color(c_red);
 
 draw_set_alpha(1);
 
-draw_text(window_get_width() / 2, window_get_height() / 2, "*Pause*");
+switch (language) {
+    case 0 : {
+        draw_text(window_get_width() / 2, window_get_height() / 2, "*Pause*");
+    }
+    break;
+    
+    case 1 : {
+        draw_text(window_get_width() / 2, window_get_height() / 2, "*Пауза*");
+    }
+    break;
+    
+    default : break;
+}
+
 
 draw_set_color(c_white);
 

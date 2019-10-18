@@ -367,6 +367,9 @@ switch (dev) {
 
         draw_text(x, y + 240, "mouse x =  " +string(mouse_x));
         draw_text(x, y + 290, "mouse y =  " +string(mouse_y));
+        
+        if (instance_exists(obj_inGameMenu))
+            draw_text(x, y + 350, "mpos = " +string(obj_inGameMenu.mpos));
             
     break;
   }

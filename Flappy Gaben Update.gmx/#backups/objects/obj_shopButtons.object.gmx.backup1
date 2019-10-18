@@ -1,7 +1,7 @@
-// 2019-10-09 22:08:46
+// 2019-10-09 22:28:50
 #event create
 var file1Open, file2Open, file3Open, file4Open, skinData1, skinData2, skinData3, skinData4; 
-skinData1 = 0;
+skinData1 = NULL;
 skinData2 = 0;
 skinData3 = 0;
 skinData4 = 0;
@@ -106,7 +106,7 @@ switch(language) {
     }
 }
 
-// menu
+// menu buttons
 var move = 0;
 
 if (global.gamepad_realCount > 0) {

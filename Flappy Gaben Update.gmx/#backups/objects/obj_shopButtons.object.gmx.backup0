@@ -1,4 +1,4 @@
-// 2019-10-09 22:08:54
+// 2019-10-09 22:29:04
 #event create
 var file1Open, file2Open, file3Open, file4Open, skinData1, skinData2, skinData3, skinData4; 
 skinData1 = 0;

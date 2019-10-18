@@ -4,12 +4,17 @@ switch (mpos) {
             break;
        }
        
-       case 1: { //menu
-            room_goto(r_menu);
+       case 1: { //options
+            //room_goto(r_menu);
             break;
        }
        
-       case 2: { // exit 
+       case 2: { // menu 
+           room_goto(r_menu);
+           break;
+       }
+       
+       case 3: { // exit
            game_end();
            break;
        }

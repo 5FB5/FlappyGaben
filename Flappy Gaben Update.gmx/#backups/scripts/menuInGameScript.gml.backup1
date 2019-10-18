@@ -1,17 +1,23 @@
-// 2019-10-09 22:21:45
+// 2019-10-18 21:50:53
 switch (mpos) {
        case 0: { //continue game
             pause = 0;
             break;
        }
        
-       case 1: { //menu
-            room_goto(r_menu);
+       case 1: { //options
+            //room_goto(r_menu);
             break;
        }
        
-       case 2: { // exit 
-           
+       case 2: { // menu 
+           room_goto(r_menu);
+           break;
+       }
+       
+       case 3: { // exit
+           game_end();
+           break;
        }
        
        default: break;

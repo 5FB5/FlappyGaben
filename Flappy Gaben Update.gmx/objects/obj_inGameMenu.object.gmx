@@ -43,16 +43,18 @@ if (file_exists("lang.txt")) {
 switch (language) {
     case 0 : {
         menuGameButton[0] = "Continue";
-        menuGameButton[1] = "Menu";
-        menuGameButton[2] = "Close the game";
+        menuGameButton[1] = "";//"Options";
+        menuGameButton[2] = "Menu";
+        menuGameButton[3] = "Close the game";
 
     }
     break;
     
     case 1 : {
         menuGameButton[0] = "Продолжить";
-        menuGameButton[1] = "Меню";
-        menuGameButton[2] = "Выйти из игры";
+        menuGameButton[1] = "";//"Настройки";
+        menuGameButton[2] = "Меню";
+        menuGameButton[3] = "Выйти из игры";
 
     }
     break;
@@ -109,7 +111,11 @@ if (move != 0) {
    mpos += move;
    audio_play_sound(snd_buttonRollOver, 0, false);
    
-   if (mpos &lt; 0) mpos = array_length_1d(menuGameButton) - 1;
+   if (mpos &lt; 0) {
+       mpos = array_length_1d(menuGameButton) - 1;
+   }
+   
+ 
    if (mpos &gt; array_length_1d(menuGameButton) - 1) mpos = 0;
  }
  
