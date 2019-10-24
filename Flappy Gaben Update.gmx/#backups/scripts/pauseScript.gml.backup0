@@ -1,4 +1,5 @@
-// 2019-10-18 21:56:58
+// 2019-10-22 22:24:56
+/*
 if (file_exists("lang.txt")) {
     file = file_text_open_read("lang.txt");
     language = file_text_read_real(file);
@@ -31,22 +32,38 @@ switch (language) {
     
     default : break;
 }
+*/
+if (object_exists(obj_player)) {
+    obj_player.vspeed = 0;
+    obj_player.gravity = 0;
+}
 
-obj_player.vspeed = 0;
-obj_player.gravity = 0;
-    
-obj_tube.hspeed = 0;
-obj_point.hspeed = 0;
-    
-obj_star.hspeed = 0;
-obj_farStar.hspeed = 0;
+if (object_exists(obj_tube)) {
+    obj_tube.hspeed = 0;
+}
 
+if (object_exists(obj_point)) {
+    obj_point.hspeed = 0;
+}
+
+if (object_exists(obj_star) && object_exists(obj_farStar)) {
+    obj_star.hspeed = 0;
+    obj_farStar.hspeed = 0;
+}
 
 //instance_activate_object(obj_inGameMenu);
-instance_deactivate_object(obj_starSpawner);
-instance_deactivate_object(obj_tubeSpawner);
-instance_deactivate_object(obj_drawScore);
-instance_deactivate_object(obj_hatSpawner)
+
+if (object_exists(obj_starSpawner))
+    instance_deactivate_object(obj_starSpawner);
+
+if (object_exists(obj_tubeSpawner))
+    instance_deactivate_object(obj_tubeSpawner);
+
+if (object_exists(obj_drawScore))
+    instance_deactivate_object(obj_drawScore);
+
+if (object_exists(obj_hatSpawner))
+    instance_deactivate_object(obj_hatSpawner);
 
 
 draw_set_color(c_black);
