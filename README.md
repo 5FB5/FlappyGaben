@@ -3,6 +3,7 @@ All sources of Flappy Gaben's project, including GameMaker Studio project's sour
 ![fg_screen1](https://i.imgur.com/ACLJeFv.jpg)
 ![fg_screenmenu](https://i.imgur.com/siBRnyR.jpg)
 
+GameJolt page: https://gamejolt.com/games/flappygaben/295698
 # Compiling
 To compile this project you must have GameMaker Studio 1.x
 
