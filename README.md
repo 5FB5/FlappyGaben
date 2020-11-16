@@ -13,4 +13,4 @@ Code editor: [GMEdit](https://yellowafterlife.itch.io/gmedit)
 I don't remember exactly, but I think I used "Particle Designer" or something like that for my particle system when score increases
 
 # Keep in mind!
-The source code is very old, full of various crutches and shit solutions, because it was written, when I was a 16-year-old stupid "coder" :)
+The source code is very old, full of various crutches and shit solutions, because it was written, when I was a 16 years old stupid "coder" :)
