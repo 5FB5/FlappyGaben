@@ -8,6 +8,8 @@ GameJolt page: https://gamejolt.com/games/flappygaben/295698
 To compile this project you must have GameMaker Studio 1.x
 
 # Third-party software
+Code editor: [GMEdit](https://yellowafterlife.itch.io/gmedit)
+
 I don't remember exactly, but I think I used "Particle Designer" or something like that for my particle system when score increases
 
 # Keep in mind!
